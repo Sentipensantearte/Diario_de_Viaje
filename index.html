@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- =====================================================
+       TÍTULO DE LA PESTAÑA DEL NAVEGADOR
+       ===================================================== -->
+  <title>Mi diario de viaje</title>
+
+  <!-- Leaflet: la librería del mapa (no tocar) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Indie+Flower&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+  <!-- Estilos  -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- =====================================================
+       ENCABEZADO
+      
+       ===================================================== -->
+  <header>
+    <h1>Mi diario de viaje</h1>
+    <p>El mundo es inmenso, imposible de abarcar, pero hay ciertos lugares que esconden historias, recuerdos, sueños, etc. Acá voy a ir compartiendo algunxs de lxs míxs. Historias de lugares a los que fui, a los que todavía no fui, pero sueño con visitar, lugares que me generan distintas sensaciones, opiniones, etc... lugares que por una cosa o por otra están ahi, espectantes... Van a estar ahi, llamandote, exploralos conmigo.</p>
+  </header>
+
+  <!-- El mapa se dibuja acá (no tocar) -->
+  <div id="mapa"></div>
+
+  <!-- Panel lateral que aparece al clickear (no tocar) -->
+  <div id="panel">
+    <button id="panel-cerrar">✕</button>
+    <div id="panel-contenido">
+      <p id="panel-bienvenida">Seleccioná un punto en el mapa</p>
+    </div>
+  </div>
+
+
+  <!-- 
+       Acá voy cargando los lugares:
+       
+
+       Cada lugar es un <article class="lugar"> con estos atributos:
+
+         data-lat    → latitud
+         data-lng    → longitud
+         data-titulo → nombre del lugar (título en el panel)
+         data-fecha  → fecha o época aprox.
+         data-foto   → ruta a la foto,  ej.: fotos/bsas.jpg
+                       Si no hay foto para ese lugar, lo dejo vacio: data-foto=""
+
+       
+       El primero es latitud, el segundo es longitud.
+
+       El TEXTO va adentro del <article>, como HTML normal.
+       Podés escribir varios párrafos con <p>, usar <em> para itálica,
+       <strong> para negrita, <br> para saltos de línea, etc.
+
+        -->
+
+  <section id="lugares" style="display:none">
+
+    <article class="lugar"
+      data-lat="-34.6037"
+      data-lng="-58.3816"
+      data-titulo="Buenos Aires"
+      data-fecha="siempre"
+      data-foto="">
+      <p>El punto de partida. El río que parece mar y el ruido que nunca para.</p>
+      <p>Esta ciudad me formó aunque a veces la quiera dejar.</p>
+    </article>
+
+    <article class="lugar"
+      data-lat="-13.5319"
+      data-lng="-71.9675"
+      data-titulo="Machu Picchu, Perú"
+      data-fecha="2022"
+      data-foto="">
+      <p>Subí con niebla. Las ruinas aparecieron de a poco, como si eligieran mostrarse.</p>
+      <p>Había algo en ese silencio que no era paz sino algo más antiguo.</p>
+    </article>
+
+    <article class="lugar"
+      data-lat="-22.9068"
+      data-lng="-43.1729"
+      data-titulo="Río de Janeiro, Brasil"
+      data-fecha="2023"
+      data-foto="">
+      <p>El carnaval como desborde necesario. La ciudad que baila aunque llueva, aunque duela.</p>
+      <p>Aprendí que la alegría también puede ser una forma de resistencia.</p>
+    </article>
+
+    <article class="lugar"
+      data-lat="-33.4489"
+      data-lng="-70.6693"
+      data-titulo="Santiago, Chile"
+      data-fecha="2021"
+      data-foto="">
+      <p>Llegué justo después del estallido. Las paredes todavía hablaban.</p>
+      <p>Una ciudad que aprendió a escribir en las calles lo que no podía decir en voz alta.</p>
+    </article>
+
+    <article class="lugar"
+      data-lat="-0.2295"
+      data-lng="-78.5243"
+      data-titulo="Quito, Ecuador"
+      data-fecha="2023"
+      data-foto="">
+      <p>La ciudad más alta donde viví. El aire enrarecido te obliga a ir más despacio,
+      a respirar con más atención.</p>
+      <p>A veces el cuerpo sabe lo que la mente tarda en aprender.</p>
+    </article>
+
+    <!-- Agregar más lugares acá arriba, antes de esto -->
+
+  </section>
+
+  <!-- Script personalizado -->
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+/*    COLORES Y TIPOGRAFÍA (ayudamemorias para cambiar todo en general:)
+   */
+:root {
+  --fondo:        #0d1628;   /* fondo de la página */
+  --fondo-panel:  #eed6a986;   /* fondo del panel lateral */
+  --borde:        #8f6b42;   /* bordes */
+  --texto:        #2b1f15;   /* texto principal */
+  --texto-suave:  #987b5e;   /* texto secundario */
+  --acento:       #7F77DD;   /* color de los marcadores */
+  --acento-visto: #5a4e88;   /* marcador ya visitado */
+  --fuente:       Georgia, serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: 'Indie Flower', cursive;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ── Encabezado ── */
+header {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--borde);
+}
+header h1 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #dbccb1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+header p {
+ /* margin-top: 0.50rem; */
+  font-size: 1rem;
+  color: var(--texto-suave);
+  font-style: italic;
+}
+#panel-contenido .historia {
+  font-size: 1.005rem;
+  line-height: 1.85;
+}
+
+
+/* ── Mapa ──
+   Cambiar "75vh" para hacer el mapa más alto o más bajo */
+#mapa {
+  width: 100%;
+  height: 75vh;
+  min-height: 400px;
+  filter: sepia(0.22) contrast(1.05) saturate(0.95);
+}
+
+/* ── Panel lateral ── */
+#panel {
+  position: fixed;
+  top: 0;
+  left: -480px;       /* empieza oculto fuera de pantalla */
+  width: 480px;
+  height: 100vh;
+  background-image: url('fotos/libreta.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-right: 1px solid rgba(143, 108, 66, 0.45);
+  overflow-y: auto;
+  padding: 2.5rem;
+  transition: left 0.35s ease;
+  z-index: 1000;
+}
+#panel::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: -480px;
+  width: 480px;
+  height: 100vh;
+  background: rgba(242, 234, 212, 0.15);
+  pointer-events: none;
+  z-index: -1;
+  transition: left 0.35s ease;
+}
+#panel.abierto { left: 0; }   /* se muestra al clickear un punto */
+#panel.abierto::before { left: 0; }
+
+#panel-cerrar {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: 1px solid var(--borde);
+  color: var(--texto-suave);
+  font-size: 1rem;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+#panel-cerrar:hover {
+  color: var(--texto);
+  border-color: var(--acento);
+}
+
+#panel-bienvenida {
+  color: var(--texto-suave);
+  font-style: italic;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+/* ── Contenido del panel ── */
+#panel-contenido h2 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  margin-bottom: 0.4rem;
+  padding-right: 2rem;
+}
+#panel-contenido .fecha {
+  font-size: 0.85rem;
+  color: var(--acento);
+  letter-spacing: 0.08em;
+  margin-bottom: 1.2rem;
+}
+#panel-contenido .foto {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 1.2rem;
+  border: 1px solid var(--borde);
+  display: block;
+}
+#panel-contenido .historia {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+#panel-contenido .historia p {
+  margin-bottom: 1rem;
+}
+#panel-contenido .historia p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Marcadores en el mapa ── */
+.marcador {
+  width: 16px;
+  height: 16px;
+  background: var(--acento);
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.marcador:hover { transform: scale(1.4); }
+.marcador.visto {
+  background: var(--acento-visto);
+  border-color: var(--acento);
+}
+
+/* ── para que sea responsive en pantallas chicas: el panel ocupa todo el ancho ── */
+@media (max-width: 500px) {
+  #panel { width: 100%; left: -100%; }
+  #panel::before { width: 100%; left: -100%; }
+  #panel.abierto::before { left: 0; }
+}
