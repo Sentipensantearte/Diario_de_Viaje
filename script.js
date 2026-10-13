@@ -17,8 +17,13 @@ const mapa = L.map('mapa', { center: CENTRO, zoom: ZOOM });
 //   Claro:  https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png
 //   Oscuro: https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '© OpenStreetMap contributors',
+//L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //attribution: '© OpenStreetMap contributors',
+  //maxZoom: 19
+// }).addTo(mapa);
+
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+  attribution: 'Tiles © Esri',
   maxZoom: 19
 }).addTo(mapa);
 
